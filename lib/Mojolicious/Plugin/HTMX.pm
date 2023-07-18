@@ -51,6 +51,7 @@ sub register {
     $app->helper('htmx.res.refresh'     => \&_res_refresh);
     $app->helper('htmx.res.replace_url' => \&_res_replace_url);
     $app->helper('htmx.res.reswap'      => \&_res_reswap);
+    $app->helper('htmx.res.reselect'    => \&_res_reselect);
     $app->helper('htmx.res.retarget'    => \&_res_retarget);
 
     $app->helper('htmx.res.trigger'              => sub { _res_trigger('default',      @_) });
@@ -143,6 +144,15 @@ sub _res_reswap {
     Carp::croak "Unknown reswap value" if (!$is_reswap);
 
     return $c->res->headers->header('HX-Reswap' => $reswap);
+
+}
+
+sub _res_reselect {
+
+    my ($c, $reselect) = @_;
+    return undef unless $reselect;
+
+    return $c->res->headers->header('HX-Reselect' => $reselect);
 
 }
 
@@ -363,6 +373,12 @@ The possible values of this attribute are:
 =back
 
 Based on C<HX-Reswap> header.
+
+=head3 htmx->res->reselect
+
+A CSS selector that allows you to choose which part of the response is used to be swapped in. Overrides an existing C<hx-select> on the triggering element
+
+Based on C<HX-Reselect> header.
 
 =head3 htmx->res->retarget
 
