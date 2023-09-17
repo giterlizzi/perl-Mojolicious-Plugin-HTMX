@@ -4,7 +4,7 @@ use Mojo::Base 'Mojolicious::Plugin';
 use Mojo::ByteStream;
 use Mojo::JSON qw(encode_json decode_json);
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 my @HX_RESWAPS = (qw[
     innerHTML
@@ -481,7 +481,7 @@ L<https://github.com/giterlizzi/perl-Mojolicious-Plugin-HTMX>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2022, Giuseppe Di Terlizzi
+Copyright (c) 2022-2023, Giuseppe Di Terlizzi
 
 This program is free software, you can redistribute it and/or modify it under
 the terms of the Artistic License version 2.0.
